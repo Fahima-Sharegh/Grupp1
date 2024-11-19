@@ -12,6 +12,6 @@ public class TestTest {
 
     @Test
     public void testingTesting() {
-        assert(false);
+        assertFalse(false);
     }
 }
