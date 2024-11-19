@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de00f5de-860c-47be-94af-878a5b48e5dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/produktapi/TestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/produktapi/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +22,12 @@
     &quot;assignee&quot;: &quot;trumanders&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Fahima-Sharegh/Grupp1.git",
-    "accountId": "3c57bbd0-28fb-4950-aff4-579756e51782"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Fahima-Sharegh/Grupp1.git&quot;,
+    &quot;accountId&quot;: &quot;3c57bbd0-28fb-4950-aff4-579756e51782&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -44,7 +43,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "add-test-test",
+    "git-widget-placeholder": "issue-12-add-pipeline",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/test-github-actions",
     "project.structure.last.edited": "Libraries",
