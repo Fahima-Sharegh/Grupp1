@@ -1,5 +1,4 @@
 name: Java CI with Maven
-
 on:
   push:
     branches: [ "add-integration-tests-try" ]
@@ -19,7 +18,6 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
           cache: maven
-
       # Install Google Chrome
       - name: Install Google Chrome
         run: |
@@ -37,10 +35,8 @@ jobs:
         run: |
       # Fetch Chrome version from the environment
           CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f1-3)
-
       # Fetch the latest Chromedriver version for the installed Chrome version
           CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-
       # Download and install the appropriate Chromedriver version
           wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
