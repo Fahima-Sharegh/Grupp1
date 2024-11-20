@@ -38,4 +38,4 @@ jobs:
 
       # Run unit tests
     - name: Run unit tests
-    - run: mvn test
+      run: mvn test
