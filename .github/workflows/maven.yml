@@ -18,6 +18,7 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
           cache: maven
+
       # Install Google Chrome
       - name: Install Google Chrome
         run: |
@@ -30,7 +31,6 @@ jobs:
           echo "Chrome version: $CHROME_VERSION"
           echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
 
-      # Install ChromeDriver
       - name: Install Chromedriver
         run: |
       # Fetch Chrome version from the environment
