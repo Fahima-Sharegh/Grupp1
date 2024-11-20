@@ -31,8 +31,8 @@ jobs:
     # Install Google Chrome
     - name: Install Google Chrome
       run: |
-        - sudo apt update
-        - sudo apt install -y wget unzip google-chrome-stable
+        sudo apt update
+        sudo apt install -y wget unzip google-chrome-stable
 
     - name: Get Chrome Version
       run: |
