@@ -25,6 +25,9 @@ jobs:
           sudo apt update
           sudo apt install -y wget unzip google-chrome-stable
 
+      - name: Create drivers directory if it doesn't exist
+        run: mkdir -p $GITHUB_WORKSPACE/drivers
+
       - name: Install Chromedriver
         run: |
           curl -L https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip -o $GITHUB_WORKSPACE/drivers/chromedriver-linux64.zip
