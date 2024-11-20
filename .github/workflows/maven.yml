@@ -31,18 +31,21 @@ jobs:
     # Install Google Chrome
     - name: Install Google Chrome
       run: |
-        sudo apt update
-        sudo apt install -y wget unzip google-chrome-stable
+        - sudo apt update
+        - sudo apt install -y wget unzip google-chrome-stable
 
     - name: Get Chrome Version
       run: |
         CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f1-3)
         echo "Chrome version: $CHROME_VERSION"
+        echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
 
     #Install ChromeDriver
     - name: Install Chromedriver
       run: |
-        wget https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION})/chromedriver_linux64.zip
+        CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
+        echo "ChromeDriver version: $CHROME_DRIVER_VERSION"
+        wget https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/chromedriver
   
