@@ -36,10 +36,6 @@ jobs:
     - name: Build the project
       run: mvn clean install -DskipTests
 
-      # Step 1: Compile, run unit tests, run integration tests, and package the application
-#    - name: Compile, unit test, and package with Maven
-#      run: mvn clean install --file pom.xml
-
-      # Step 2: Run tests
-#    - name: Run integration tests with Maven
-#      run: mvn verify --file pom.xml
+      # Run unit tests
+    - name: Run unit tests
+    - run: mvn test
