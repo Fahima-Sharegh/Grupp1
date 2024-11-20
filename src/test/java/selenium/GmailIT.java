@@ -25,6 +25,7 @@ public class GmailIT {
         option.addArguments("--headless");
         option.addArguments("--no-sandbox");
         option.addArguments("--disable-dev-shm-usage");
+        option.setCapability("goog:loggingPrefs", java.util.Map.of("browser", "OFF"));
         driver = new ChromeDriver(option);
     }
 

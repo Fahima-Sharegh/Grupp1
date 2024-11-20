@@ -44,4 +44,4 @@ jobs:
 
       # Run integration tests
       - name: Run integration tests (Selenium)
-        run: mvn --no-transfer-progress verify
+        run: mvn verify
