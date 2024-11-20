@@ -27,6 +27,7 @@ jobs:
 
       - name: Install Chromedriver
         run: |
+          mkdir -p /home/runner/work/Grupp1/Grupp1/drivers
           curl -L https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip -o /home/runner/work/Grupp1/Grupp1/drivers/chromedriver_linux64.zip
           ls -l /home/runner/work/Grupp1/Grupp1/drivers/
           unzip /home/runner/work/Grupp1/Grupp1/drivers/chromedriver_linux64.zip -d /home/runner/work/Grupp1/Grupp1/drivers/
