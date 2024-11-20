@@ -36,6 +36,10 @@ jobs:
     - name: Build the project
       run: mvn clean install -DskipTests
 
-      # Run unit tests
+    # Run unit tests
     - name: Run unit tests
       run: mvn test
+
+    # Run integration tests
+    - name: Run integration tests (Selenium)
+      run: mvn verify
