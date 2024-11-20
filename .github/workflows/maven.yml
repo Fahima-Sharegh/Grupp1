@@ -28,8 +28,8 @@ jobs:
       - name: Get Chrome Version
         run: |
           CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f1-3)
-          echo "Chrome version: $CHROME_VERSION"
-          echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
+      # echo "Chrome version: $CHROME_VERSION"
+      # echo "CHROME_VERSION=$CHROME_VERSION" >> $GITHUB_ENV
 
       - name: Install Chromedriver
         run: |
