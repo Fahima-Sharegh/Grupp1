@@ -1,0 +1,3 @@
+com\example\produktapi\UnitTest.class
+selenium\RunCucumberIT.class
+selenium\StepDefinition.class
