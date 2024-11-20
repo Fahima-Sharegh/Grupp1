@@ -14,6 +14,7 @@ public class GmailIT {
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "/home/runner/work/Grupp1/Grupp1/drivers/chromedriver");
     }
 
     @BeforeEach
@@ -21,6 +22,9 @@ public class GmailIT {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
         option.addArguments("incognito");
+        option.addArguments("--headless");
+        option.addArguments("--no-sandbox");
+        option.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(option);
     }
 
