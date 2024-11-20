@@ -1,10 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: selenium.GmailIT
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.28 s <<< FAILURE! - in selenium.GmailIT
-selenium.GmailIT  Time elapsed: 0.279 s  <<< ERROR!
-java.lang.NoClassDefFoundError: org/apache/hc/client5/http/config/ConnectionConfig
-	at selenium.GmailIT.setupClass(GmailIT.java:16)
-Caused by: java.lang.ClassNotFoundException: org.apache.hc.client5.http.config.ConnectionConfig
-	at selenium.GmailIT.setupClass(GmailIT.java:16)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.845 s - in selenium.GmailIT

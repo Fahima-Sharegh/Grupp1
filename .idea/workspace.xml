@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/selenium/RunCucumberIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/selenium/RunCucumberIT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Produktapi-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Produktapi-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Produktapi-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/Produktapi-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/failsafe-reports/TEST-selenium.GmailIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/TEST-selenium.GmailIT.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/failsafe-reports/TEST-selenium.RunCucumberIT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/TEST-selenium.RunCucumberIT.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/failsafe-reports/failsafe-summary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/failsafe-summary.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/failsafe-reports/selenium.RunCucumberIT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/selenium.RunCucumberIT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/failsafe-reports/selenium.GmailIT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/failsafe-reports/selenium.GmailIT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.produktapi.TestTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.produktapi.TestTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.produktapi.TestTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.produktapi.TestTest.txt" afterDir="false" />
@@ -44,12 +46,12 @@
     &quot;assignee&quot;: &quot;trumanders&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Fahima-Sharegh/Grupp1.git&quot;,
-    &quot;accountId&quot;: &quot;3c57bbd0-28fb-4950-aff4-579756e51782&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Fahima-Sharegh/Grupp1.git",
+    "accountId": "ab682936-8d89-4e35-83ff-ddae897bd081"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -59,35 +61,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GmailIT.executor": "Run",
-    "JUnit.GmailIT.checkTitle.executor": "Run",
-    "JUnit.GmailIT.executor": "Run",
-    "JUnit.RunCucumberIT.executor": "Run",
-    "JUnit.TestTest.executor": "Run",
-    "JUnit.selenium in Produktapi.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "add-integration-tests-try",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/selenium-test",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GmailIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GmailIT.checkTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GmailIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RunCucumberIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.selenium in Produktapi.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-integration-tests-try&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/selenium-test&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.selenium in Produktapi">
-    <configuration name="GmailIT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="selenium.GmailIT" />
-      <module name="Produktapi" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="selenium.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+}</component>
+  <component name="RunManager" selected="JUnit.TestTest">
     <configuration name="GmailIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
       <extension name="coverage">
@@ -119,6 +108,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RunCucumberIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.RunCucumberIT" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
       <extension name="coverage">
@@ -144,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.selenium in Produktapi" />
-        <item itemvalue="JUnit.GmailIT" />
-        <item itemvalue="JUnit.GmailIT.checkTitle" />
-        <item itemvalue="Application.GmailIT" />
         <item itemvalue="JUnit.TestTest" />
+        <item itemvalue="JUnit.RunCucumberIT" />
+        <item itemvalue="JUnit.GmailIT" />
+        <item itemvalue="JUnit.selenium in Produktapi" />
+        <item itemvalue="JUnit.GmailIT.checkTitle" />
       </list>
     </recent_temporary>
   </component>
@@ -162,5 +166,28 @@
       <updated>1732101234719</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="add-integration-tests-try" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
