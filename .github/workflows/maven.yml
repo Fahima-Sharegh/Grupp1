@@ -1,9 +1,9 @@
 name: Java CI with Maven
 on:
   push:
-    branches: [ "add-integration-tests-try" ]
+    branches: [ "main, develop" ]
   pull_request:
-    branches: [ "add-integration-tests-try" ]
+    branches: [ "main, develop" ]
 
 jobs:
   build:
@@ -19,7 +19,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # Install Google Chrome
       - name: Install Google Chrome
         run: |
           sudo apt update
@@ -32,14 +31,11 @@ jobs:
           unzip /home/runner/work/Grupp1/Grupp1/drivers/chromedriver_linux64.zip -d /home/runner/work/Grupp1/Grupp1/drivers/
           sudo mv /home/runner/work/Grupp1/Grupp1/drivers/chromedriver /usr/local/bin/chromedriver
 
-      # Build project
       - name: Build the project
         run: mvn clean install -DskipTests
 
-      # Run unit tests
       - name: Run unit tests
         run: mvn test
 
-      # Run integration tests
       - name: Run integration tests (Selenium)
         run: mvn verify
