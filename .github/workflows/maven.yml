@@ -32,7 +32,16 @@ jobs:
     - name: Install Chrome
       uses: browser-actions/setup-chrome@latest
 
-    # Build project
+    #Install ChromeDriver
+    - name: Install ChromeDriver
+      run: |
+        CHROME_VERSION=$(google-chrome-stable --version | awk '{print $3}' | cut -d '.' -f1-3)
+        wget https://chromedriver.storage.googleapis.com/$(wget -q -O - https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_VERSION})/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        sudo mv chromedriver /usr/local/bin/chromedriver
+  
+
+  # Build project
     - name: Build the project
       run: mvn clean install -DskipTests
 
