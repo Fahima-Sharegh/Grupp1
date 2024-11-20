@@ -38,7 +38,7 @@ public class GmailIT {
             String title = driver.getTitle();
 
             // Assert that the title is correct
-            assertEquals("Fail-test", title);
+            assertEquals("Gmail", title);
 
             System.out.println("Test Passed! Title is correct: " + title);
         } catch (Exception e) {
