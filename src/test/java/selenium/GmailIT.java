@@ -14,7 +14,7 @@ public class GmailIT {
     @BeforeAll
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
-        System.setProperty("webdriver.chrome.driver", "/home/runner/work/Grupp1/Grupp1/drivers/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/home/runner/work/Grupp1/Grupp1/drivers/chromedriver");
     }
 
     @BeforeEach
