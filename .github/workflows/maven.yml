@@ -28,10 +28,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-      # Step 1: Compile, run unit tests, and package the application
+      # Step 1: Compile, run unit tests, run integration tests, and package the application
     - name: Compile, unit test, and package with Maven
       run: mvn clean install --file pom.xml
 
-      # Step 2: Run integration tests
-    - name: Run integration tests with Maven
-      run: mvn verify --file pom.xml
+      # Step 2: Run tests
+#    - name: Run integration tests with Maven
+#      run: mvn verify --file pom.xml
