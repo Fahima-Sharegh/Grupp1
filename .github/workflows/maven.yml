@@ -27,5 +27,11 @@ jobs:
         java-version: '23'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B verify --file pom.xml
+
+      # Step 1: Compile, run unit tests, and package the application
+    - name: Compile, unit test, and package with Maven
+      run: mvn clean install --file pom.xml
+
+      # Step 2: Run integration tests
+    - name: Run integration tests with Maven
+      run: mvn verify --file pom.xml
