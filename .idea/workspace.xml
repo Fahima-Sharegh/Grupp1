@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="add-test-test" />
+        <entry key="$PROJECT_DIR$" value="issue-14-add-selenium" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,12 +34,12 @@
     &quot;assignee&quot;: &quot;trumanders&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Fahima-Sharegh/Grupp1.git",
-    "accountId": "3c57bbd0-28fb-4950-aff4-579756e51782"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Fahima-Sharegh/Grupp1.git&quot;,
+    &quot;accountId&quot;: &quot;3c57bbd0-28fb-4950-aff4-579756e51782&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -50,21 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GmailIT.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GmailIT.checkTitle.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GmailIT.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RunCucumberIT.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TestTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.selenium in Produktapi.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-integration-tests-try&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/selenium-test&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GmailIT.executor": "Run",
+    "JUnit.GmailIT.checkTitle.executor": "Run",
+    "JUnit.GmailIT.executor": "Run",
+    "JUnit.RunCucumberIT.executor": "Run",
+    "JUnit.TestTest.executor": "Run",
+    "JUnit.selenium in Produktapi.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "issue-16-add-actual-website-test",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/selenium-test",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JUnit.RunCucumberIT">
     <configuration name="GmailIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
