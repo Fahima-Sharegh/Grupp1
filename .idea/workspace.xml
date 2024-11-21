@@ -7,6 +7,7 @@
     <list default="true" id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/selenium/TheShopTest.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,8 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="issue-14-add-selenium" />
+
+        <entry key="$PROJECT_DIR$" value="issue-14-add-selenium" 
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,12 +36,14 @@
     &quot;assignee&quot;: &quot;trumanders&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Fahima-Sharegh/Grupp1.git&quot;,
-    &quot;accountId&quot;: &quot;3c57bbd0-28fb-4950-aff4-579756e51782&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Fahima-Sharegh/Grupp1.git",
+    "accountId": "3c57bbd0-28fb-4950-aff4-579756e51782"
   }
+
 }</component>
+
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -49,6 +53,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.GmailIT.executor": "Run",
@@ -141,6 +146,7 @@
       <option name="MAIN_CLASS_NAME" value="selenium.TheShopTest" />
       <option name="METHOD_NAME" value="checkTitle" />
       <option name="TEST_OBJECT" value="method" />
+
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,6 +158,9 @@
         <item itemvalue="JUnit.TheShopTest.checkTitle" />
         <item itemvalue="JUnit.RunCucumberIT" />
         <item itemvalue="JUnit.TestTest" />
+        <item itemvalue="JUnit.GmailIT" />
+        <item itemvalue="JUnit.selenium in Produktapi" />
+        <item itemvalue="JUnit.GmailIT.checkTitle" />
       </list>
     </recent_temporary>
   </component>
