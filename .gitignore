@@ -1,4 +1,6 @@
 *.class
+workspace.xml
 
+.idea/
 .target/
 .vscode/

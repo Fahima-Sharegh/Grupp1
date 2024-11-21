@@ -1,0 +1,8 @@
+com\example\produktapi\service\ProductService.class
+com\example\produktapi\service\ExceptionHandlerAdvice.class
+com\example\produktapi\controller\ProductController.class
+com\example\produktapi\exception\BadRequestException.class
+com\example\produktapi\repository\ProductRepository.class
+com\example\produktapi\model\Product.class
+com\example\produktapi\exception\EntityNotFoundException.class
+com\example\produktapi\ProduktapiApplication.class

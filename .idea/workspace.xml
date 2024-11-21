@@ -4,18 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de00f5de-860c-47be-94af-878a5b48e5dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+    <list default="true" id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="add-test-test" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -24,42 +35,83 @@
     &quot;assignee&quot;: &quot;trumanders&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Fahima-Sharegh/Grupp1.git&quot;,
-    &quot;accountId&quot;: &quot;3c57bbd0-28fb-4950-aff4-579756e51782&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Fahima-Sharegh/Grupp1.git",
+    "accountId": "3c57bbd0-28fb-4950-aff4-579756e51782"
   }
-}</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
-  </component>
+}]]></component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2otdouhiVY5QMj6oKYR7qaW1ezM" />
+  <component name="ProjectId" id="2p6zIau86XiQyUmfx0RQ9rjEYvx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.TestTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "issue-12-add-pipeline",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/Lab2-del2",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GmailIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GmailIT.checkTitle.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GmailIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RunCucumberIT.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TestTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.selenium in Produktapi.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-integration-tests-try&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Anders/OneDrive/Programmering/SKOLA/ITHS - Testautomatiserare/selenium-test&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Anders\OneDrive\Programmering\SKOLA\ITHS - Testautomatiserare\Grupp1" />
-    </key>
-  </component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="JUnit.RunCucumberIT">
+    <configuration name="GmailIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.GmailIT" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GmailIT.checkTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.GmailIT" />
+      <option name="METHOD_NAME" value="checkTitle" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunCucumberIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.RunCucumberIT" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
       <extension name="coverage">
@@ -75,20 +127,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="selenium in Produktapi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java/selenium" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RunCucumberIT" />
         <item itemvalue="JUnit.TestTest" />
+        <item itemvalue="JUnit.GmailIT" />
+        <item itemvalue="JUnit.selenium in Produktapi" />
+        <item itemvalue="JUnit.GmailIT.checkTitle" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="de00f5de-860c-47be-94af-878a5b48e5dc" name="Changes" comment="" />
-      <created>1731692983252</created>
+      <changelist id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="" />
+      <created>1732101234719</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1731692983252</updated>
+      <updated>1732101234719</updated>
     </task>
     <servers />
   </component>
@@ -97,7 +161,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="add-integration-tests-try" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
