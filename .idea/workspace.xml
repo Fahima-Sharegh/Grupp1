@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b930ab9b-0229-4837-ab48-699fe9a4c45a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/selenium/GmailIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/selenium/TheShopTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,9 @@
     "JUnit.GmailIT.executor": "Run",
     "JUnit.RunCucumberIT.executor": "Run",
     "JUnit.TestTest.executor": "Run",
+    "JUnit.TheShopTest.checkAllProductsButton.executor": "Run",
+    "JUnit.TheShopTest.checkTitle.executor": "Run",
+    "JUnit.TheShopTest.executor": "Run",
     "JUnit.selenium in Produktapi.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "issue-16-add-actual-website-test",
@@ -64,38 +67,7 @@
     "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.RunCucumberIT">
-    <configuration name="GmailIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Produktapi" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="selenium.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="selenium" />
-      <option name="MAIN_CLASS_NAME" value="selenium.GmailIT" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GmailIT.checkTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Produktapi" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="selenium.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="selenium" />
-      <option name="MAIN_CLASS_NAME" value="selenium.GmailIT" />
-      <option name="METHOD_NAME" value="checkTitle" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TheShopTest">
     <configuration name="RunCucumberIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
       <extension name="coverage">
@@ -126,21 +98,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="selenium in Produktapi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TheShopTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Produktapi" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/java/selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.TheShopTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TheShopTest.checkAllProductsButton" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.TheShopTest" />
+      <option name="METHOD_NAME" value="checkAllProductsButton" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TheShopTest.checkTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Produktapi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="selenium.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="selenium" />
+      <option name="MAIN_CLASS_NAME" value="selenium.TheShopTest" />
+      <option name="METHOD_NAME" value="checkTitle" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TheShopTest" />
+        <item itemvalue="JUnit.TheShopTest.checkAllProductsButton" />
+        <item itemvalue="JUnit.TheShopTest.checkTitle" />
         <item itemvalue="JUnit.RunCucumberIT" />
         <item itemvalue="JUnit.TestTest" />
-        <item itemvalue="JUnit.GmailIT" />
-        <item itemvalue="JUnit.selenium in Produktapi" />
-        <item itemvalue="JUnit.GmailIT.checkTitle" />
       </list>
     </recent_temporary>
   </component>
