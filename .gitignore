@@ -5,6 +5,7 @@
 .idea/
 .target/
 .vscode/
+.idx/
 
 # Package Files #
 *.jar
