@@ -3,8 +3,8 @@
 
 # Ignoring IDE specific folders
 .idea/
+.target/
 .vscode/
-.idx/
 
 # Package Files #
 *.jar
