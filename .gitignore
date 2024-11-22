@@ -1,3 +1,4 @@
+# Ignoring compiled class files
 *.class
 
 # Ignoring IDE specific folders
