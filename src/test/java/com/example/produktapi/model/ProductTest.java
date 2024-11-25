@@ -1,19 +1,18 @@
 package com.example.produktapi.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ProductTest {
     private Product product;
-
 
     @BeforeEach
     void setUp() {
         product = new Product();
     }
-
     @Test //Fahima
     void testProductTitle() {
         String expectedTitle = "T-shirt";
@@ -85,7 +84,7 @@ class ProductTest {
         String image = "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg";
         Double price = 109.95;
 
-        Product product = new Product();
+        product = new Product(); // Use the class-level field
         product.setTitle(title);
         product.setImage(image);
         product.setPrice(price);
@@ -106,7 +105,7 @@ class ProductTest {
 
     @Test //Fahima
     void testSettersAndGetters() {
-        Product product = new Product();
+        product = new Product();
         Integer id = 20;
         String title = "DANVOUY Womens T Shirt Casual Cotton Short";
         Double price = 12.99;

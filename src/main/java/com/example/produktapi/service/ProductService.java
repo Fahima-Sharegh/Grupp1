@@ -1,14 +1,14 @@
 package com.example.produktapi.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.example.produktapi.exception.BadRequestException;
 import com.example.produktapi.exception.EntityNotFoundException;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -16,7 +16,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    @Autowired
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -64,7 +63,7 @@ public class ProductService {
 
     public void deleteProduct(Integer id) {
 
-        Optional product = productRepository.findById(id);
+        Optional<Product> product = productRepository.findById(id);
         if (product.isEmpty()) {
             throw new EntityNotFoundException(id);
         }
