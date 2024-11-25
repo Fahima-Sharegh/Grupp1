@@ -1,0 +1,45 @@
+# Ignoring compiled class files
+*.class
+
+# Ignoring IDE specific folders
+.idea/
+.target/
+.vscode/
+.idx/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven specific files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Surefire test results
+surefire-reports/
+
+# Build directories
+bin/
+out/
+
+# IDE auto-generated test files
+test-output/
+
+# Temporary files
+*.swp
+*.swo
+
+# macOS specific files. Added this since alteast 2 of us use macs.
+.DS_Store
+
+# Log files we shouldn't need to store logs in the git. They should be used for local debugging.
+*.log
