@@ -1,15 +1,21 @@
 { pkgs, ... }: {
   # Specify the Nix package channel
-  channel = "stable-23.11"; # or "unstable"
+  channel = "stable-23.11"; # Use the appropriate NixOS channel
 
   # Define the packages to install
   packages = [
-    pkgs.jdk19
+    pkgs.jdk19 # Matches the Java version in pom.xml
+    pkgs.maven # Required to build the project using Maven
+    pkgs.git   # Useful for version control if needed
   ];
 
-  # Set environment variables (if needed)
-  env = {};
+  # Set environment variables
+  env = {
+    # MAVEN_OPTS can be set here if additional memory or flags are needed
+    MAVEN_OPTS = "-Xmx1024m";
+  };
 
+  # IDE extensions
   idx = {
     # List of IDE extensions to install
     extensions = [
@@ -31,7 +37,7 @@
       previews = {
         web = {
           # Command to run your application
-          command = ["./gradlew" ":bootRun" "--args='--server.port=$PORT'"];
+          command = ["mvn" "spring-boot:run" "--args='--server.port=$PORT'"];
           manager = "web";
         };
       };
@@ -42,12 +48,12 @@
       # Commands to run when the workspace is created
       onCreate = {
         # Example: install dependencies
-        # npm-install = 'npm install';
+        maven-deps = "mvn clean install -DskipTests";
       };
       # Commands to run when the workspace starts
       onStart = {
-        # Example: start a background task
-        # watch-backend = "npm run watch-backend";
+        # Example: start the application
+        start-backend = "mvn spring-boot:run";
       };
     };
   };
