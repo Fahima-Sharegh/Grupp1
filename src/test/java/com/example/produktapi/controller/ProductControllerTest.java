@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class API_Test {
+public class ProductControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -33,7 +33,6 @@ public class API_Test {
 
     @Test
     public void testGetAllProducts_NoProductsExist() throws Exception {
-        // Ensure no products exist
         productRepository.deleteAll();
 
         mockMvc.perform(get("/products/1")
@@ -52,5 +51,35 @@ public class API_Test {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(2)));
+    }
+
+    @Test
+    public void testGetProductById_ValidProductId() throws Exception {
+        Product product = new Product("Valid Product", 99.99, "Valid Category", "Valid Description", "valid.jpg");
+        product = productRepository.save(product);
+
+        mockMvc.perform(get("/products/" + product.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("Valid Product"))
+                .andExpect(jsonPath("$.price").value(99.99));
+    }
+
+    @Test
+    public void testGetProductById_NonExistentProductId() throws Exception {
+        // Act & Assert: Attempt to fetch a non-existent product ID
+        mockMvc.perform(get("/products/9999")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string(containsString("Produkt med id 9999 hittades inte")));
+    }
+
+    @Test
+    public void testGetProductById_InvalidProductId() throws Exception {
+        // Act & Assert: Attempt to fetch a product with an invalid ID
+        mockMvc.perform(get("/products/-1")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Invalid product ID"));
     }
 }

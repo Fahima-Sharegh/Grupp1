@@ -13,13 +13,11 @@ import com.example.produktapi.repository.ProductRepository;
 @Service
 public class ProductService {
 
-
     private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
@@ -34,35 +32,36 @@ public class ProductService {
     }
 
     public Product getProductById(Integer id) {
+        // I've added exception to validate the product ID if ID is null or <= o, so it will return 400 and message exception "Invalid product ID"
+        if (id == null || id <= 0) {
+            throw new BadRequestException("Invalid product ID");
+        }
 
         Optional<Product> product = productRepository.findById(id);
-
         if (product.isEmpty()) {
             throw new EntityNotFoundException(id);
         }
+
         return product.get();
     }
 
     public Product addProduct(Product product) {
-
         Optional<Product> p = productRepository.findByTitle(product.getTitle());
         if (p.isPresent()) {
-            throw new BadRequestException("En produkt med titeln: "+ product.getTitle() + " finns redan");
+            throw new BadRequestException("En produkt med titeln: " + product.getTitle() + " finns redan");
         }
         return productRepository.save(product);
     }
 
     public Product updateProduct(Product updatedProduct, Integer id) {
-
         Optional<Product> product = productRepository.findById(id);
         if (product.isEmpty()) {
-             throw new EntityNotFoundException(id);
+            throw new EntityNotFoundException(id);
         }
         return productRepository.save(product.get());
     }
 
     public void deleteProduct(Integer id) {
-
         Optional<Product> product = productRepository.findById(id);
         if (product.isEmpty()) {
             throw new EntityNotFoundException(id);
