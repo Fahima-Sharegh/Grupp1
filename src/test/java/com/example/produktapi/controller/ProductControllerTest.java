@@ -40,6 +40,7 @@ public class ProductControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+
     @Test
     public void testGetAllProducts_MultipleProductsExist() throws Exception {
         productRepository.saveAll(List.of(
@@ -53,6 +54,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)));
     }
 
+
     @Test
     public void testGetProductById_ValidProductId() throws Exception {
         Product product = new Product("Valid Product", 99.99, "Valid Category", "Valid Description", "valid.jpg");
@@ -64,6 +66,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.title").value("Valid Product"))
                 .andExpect(jsonPath("$.price").value(99.99));
     }
+
 
     @Test
     public void testGetProductById_NonExistentProductId() throws Exception {
@@ -82,4 +85,5 @@ public class ProductControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string("Invalid product ID"));
     }
+
 }
