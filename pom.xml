@@ -24,9 +24,9 @@
     <properties>
         <java.version>19</java.version>
         <cucumber.version>7.14.0</cucumber.version>
+        <junit.platform.version>1.9.2</junit.platform.version> <!-- Latest stable version -->
         <maven.failsafe.plugin.version>3.0.0</maven.failsafe.plugin.version>
         <maven.surefire.plugin.version>3.0.0</maven.surefire.plugin.version>
-        <junit.platform.version>1.9.2</junit.platform.version> <!-- Latest stable version -->
     </properties>
 
     <!-- Dependencies -->
@@ -106,7 +106,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-suite-api</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
