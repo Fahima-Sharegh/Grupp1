@@ -1,25 +1,22 @@
 { pkgs, ... }: {
-  # Specify the Nix package channel
-  channel = "stable-23.11"; # Use the appropriate NixOS channel
-
-  # Define the packages to install
+  # Specify the packages to install
   packages = [
-    pkgs.jdk19       # Matches the Java version in pom.xml
-    pkgs.maven       # Required to build the project using Maven
-    pkgs.git         # Useful for version control if needed
-    pkgs.chromedriver # Install ChromeDriver
-    pkgs.google-chrome # Install Google Chrome
+    pkgs.jdk19          # Java JDK 19 for your project
+    pkgs.maven          # Maven for building the project
+    pkgs.git            # Git for version control
+    pkgs.chromedriver   # ChromeDriver for Selenium
+    pkgs.chromium       # Chromium (alternative to Google Chrome)
   ];
 
-  # Set environment variables
+  # Environment variables
   env = {
-    # MAVEN_OPTS can be set here if additional memory or flags are needed
+    # Set memory options for Maven
     MAVEN_OPTS = "-Xmx1024m";
   };
 
   # IDE extensions
   idx = {
-    # List of IDE extensions to install
+    # List of IDE extensions for Java and Spring Boot development
     extensions = [
       "redhat.java"
       "vscjava.vscode-java-debug"
@@ -33,28 +30,25 @@
       "vscjava.vscode-spring-initializr"
     ];
 
-    # Enable and configure previews
+    # Preview configuration for running the application
     previews = {
       enable = true;
       previews = {
         web = {
-          # Command to run your application
           command = ["mvn" "spring-boot:run" "--args='--server.port=$PORT'"];
           manager = "web";
         };
       };
     };
 
-    # Workspace lifecycle hooks
+    # Lifecycle hooks for workspace
     workspace = {
-      # Commands to run when the workspace is created
       onCreate = {
-        # Example: install dependencies
+        # Install Maven dependencies when the workspace is created
         maven-deps = "mvn clean install -DskipTests";
       };
-      # Commands to run when the workspace starts
       onStart = {
-        # Example: start the application
+        # Start the backend application
         start-backend = "mvn spring-boot:run";
       };
     };
