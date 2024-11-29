@@ -4,9 +4,11 @@
 
   # Define the packages to install
   packages = [
-    pkgs.jdk19 # Matches the Java version in pom.xml
-    pkgs.maven # Required to build the project using Maven
-    pkgs.git   # Useful for version control if needed
+    pkgs.jdk19       # Matches the Java version in pom.xml
+    pkgs.maven       # Required to build the project using Maven
+    pkgs.git         # Useful for version control if needed
+    pkgs.chromedriver # Install ChromeDriver
+    pkgs.google-chrome # Install Google Chrome
   ];
 
   # Set environment variables

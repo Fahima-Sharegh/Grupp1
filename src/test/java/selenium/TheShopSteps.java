@@ -1,7 +1,10 @@
 package selenium;
 
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.Before;
+import io.cucumber.spring.CucumberContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.example.produktapi.ProduktapiApplication;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
@@ -12,29 +15,23 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SpringBootTest(classes = ProduktapiApplication.class)
+@CucumberContextConfiguration
 public class TheShopSteps {
+
     WebDriver driver;
     String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
 
-    @BeforeAll
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @Before
-    public void setup() {
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--remote-allow-origins=*");
-        option.addArguments("incognito");
-        option.addArguments("--headless");
-        option.addArguments("--no-sandbox");
-        option.addArguments("--disable-dev-shm-usage");
-
-        driver = new ChromeDriver(option);
-    }
-
     @Given("I open the web shop")
     public void iOpenTheWebShop() {
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("incognito");
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         driver.get(URL);
     }
 
