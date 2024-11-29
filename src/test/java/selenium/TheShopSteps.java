@@ -1,24 +1,27 @@
 package selenium;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import static org.junit.jupiter.api.Assertions.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TheShopTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class TheShopSteps {
     WebDriver driver;
     String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
 
     @BeforeAll
-    static void setupClass() {
+    public static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeEach
+    @Before
     public void setup() {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--remote-allow-origins=*");
@@ -27,20 +30,24 @@ public class TheShopTest {
         option.addArguments("--no-sandbox");
         option.addArguments("--disable-dev-shm-usage");
 
-        // Disable logging for Google Chrome browser
-        option.setCapability("goog:loggingPrefs", java.util.Map.of("browser", "OFF"));
         driver = new ChromeDriver(option);
+    }
+
+    @Given("I open the web shop")
+    public void iOpenTheWebShop() {
         driver.get(URL);
     }
 
-    @Test
-    public void checkTitle() {
-        assertEquals("Webbutiken", driver.getTitle());
+    @Then("the title should be {string}")
+    public void theTitleShouldBe(String expectedTitle) {
+        assertEquals(expectedTitle, driver.getTitle());
         driver.quit();
     }
 
-    @Test
-    public void checkAllProductsButton() {
-        assertEquals("All products", driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/button")).getText());
+    @Then("the {string} button should be visible")
+    public void theButtonShouldBeVisible(String buttonText) {
+        String actualText = driver.findElement(By.xpath("/html/body/div[1]/div/div[1]/div/button")).getText();
+        assertEquals(buttonText, actualText);
+        driver.quit();
     }
 }
