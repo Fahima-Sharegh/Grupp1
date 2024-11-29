@@ -17,6 +17,35 @@
 		<java.version>19</java.version>
 	</properties>
 	<dependencies>
+		    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-spring</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- Optional: If you're using JUnit 5 -->
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit-platform-engine</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+    </dependency>
+
 
 		<!-- OpenQA Selenium WebDriver Dependency -->
 		<dependency>
