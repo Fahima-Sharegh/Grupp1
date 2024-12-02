@@ -14,7 +14,7 @@ Feature: Issues from Carl
 
   Scenario: Navigate to the checkout page
     Given the user navigates to the shop homepage
-    When the user clicks on the "Checkout" link
+    When the user clicks on the "Checkout" button
     Then the page route should be "checkout"
 
   Scenario: Search for a specific product

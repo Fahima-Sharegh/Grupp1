@@ -29,8 +29,8 @@ public class StepDefinitions {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("incognito");
         options.addArguments("--headless");
+        options.addArguments("incognito");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
@@ -59,39 +59,37 @@ public class StepDefinitions {
         link.click();
     }
 
+    @When("the user clicks on the {string} button")
+    public void clickOnButton(String buttonText) {
+        // Locate the button by its visible text and class
+        WebElement button = driver.findElement(By.xpath("//a[contains(@class, 'btn') and contains(text(), '" + buttonText + "')]"));
+        button.click();
+    }
+
     @Then("the page route should be {string}")
     public void verifyPageRoute(String expectedRoute) {
+        // Get the current URL
         String currentUrl = driver.getCurrentUrl();
+        // Extract the route by removing the base URL
         String currentRoute = currentUrl.replace(URL, "");
-        assertEquals(expectedRoute, currentRoute);
+        // Verify the extracted route matches the expected route
+        assertEquals(expectedRoute, currentRoute, "The page route did not match the expected route.");
     }
 
     @When("the user searches for {string}")
     public void searchForProduct(String productName) {
-        // Navigate to the shop homepage
-        driver.get(URL+"products");
+        driver.get(URL + "products");
 
         By searchBoxLocator = By.id("search");
-
-        // First, locate the WebElement using the locator
         WebElement searchBox = driver.findElement(searchBoxLocator);
-        
-        // Then, use `sendKeys` on the WebElement
         searchBox.sendKeys(productName + Keys.RETURN);
     }
 
     @Then("the search results should display {string}")
     public void verifySearchResults(String productName) {
-        // Initialize WebDriverWait with a 10-second timeout
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    
-        // Define a precise XPath to locate the <h3> element with the product name
         String xpathExpression = "//h3[contains(@class, 'card-title') and contains(text(), '" + productName + "')]";
-    
-        // Wait until the <h3> element is visible
         WebElement searchResult = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
-        
-        // Assert that the element is displayed
         assertTrue(searchResult.isDisplayed(), "Search result not displayed for: " + productName);
     }
 }
