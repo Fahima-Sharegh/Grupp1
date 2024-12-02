@@ -1,19 +1,18 @@
 package com.example.produktapi.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ProductTest {
     private Product product;
-
 
     @BeforeEach
     void setUp() {
         product = new Product();
     }
-
     @Test //Fahima
     void testProductTitle() {
         String expectedTitle = "T-shirt";
