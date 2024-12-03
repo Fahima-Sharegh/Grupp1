@@ -1,9 +1,16 @@
 package steps;
 
+import java.net.*;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +26,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
     private WebDriver driver;
@@ -91,5 +100,38 @@ public class StepDefinitions {
         String xpathExpression = "//h3[contains(@class, 'card-title') and contains(text(), '" + productName + "')]";
         WebElement searchResult = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathExpression)));
         assertTrue(searchResult.isDisplayed(), "Search result not displayed for: " + productName);
+    }
+
+
+
+    @Given("I am on the page {string}")
+    public void navigateToHomePage(String homepageURL) {
+        driver.get(homepageURL);
+    }
+
+    @Then("I should not get an HTTP response error for any of the links")
+    public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+        boolean testFail = false;
+        for (WebElement link : links) {
+            String href = link.getAttribute("href");
+            if (href == null || !href.startsWith("http")) {
+                continue;
+            }
+            System.out.print("Testing link:\t" + href + "\t");
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(href)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            int responseCode = response.statusCode();
+            if ((responseCode < 200 || responseCode > 399) && responseCode != 999) {
+                testFail = true;
+                System.out.println("\u001B[31mFAIL! (" + responseCode + ")\u001B[0m");
+            }
+            else
+                System.out.println("\u001B[32mOK! (" + responseCode + ")\u001B[0m");
+        }
+        if (testFail) {
+            fail("There were broken links on the page");
+        }
     }
 }
