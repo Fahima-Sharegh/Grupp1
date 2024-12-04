@@ -5,7 +5,7 @@ Feature: Issues from Carl
 
   Scenario: Navigate to the Home page
     Given the user navigates to the shop homepage
-    Then the page title should be "Webbutiken"
+    Then the page title should be "The Shop"
 
   Scenario: Navigate to the Shop page
     Given the user navigates to the shop homepage
