@@ -32,6 +32,7 @@ public class StepDefinitionsBaraa {
         options.addArguments("window-size=1920,1080");
         options.addArguments("start-maximized");
         options.addArguments("incognito");
+        options.addArguments("--headless"); // Enables headless mode
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
