@@ -203,7 +203,7 @@ public class StepDefinitionsBaraa {
     @When("I select {string} as the {string}")
     public void iSelectAsThe(String value, String fieldName) {
         if (fieldName.equalsIgnoreCase("Payment method")) {
-            String radioId = "";
+            String radioId = "form-check";
             switch (value.toLowerCase()) {
                 case "credit":
                     radioId = "credit";
