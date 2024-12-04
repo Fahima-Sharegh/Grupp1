@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.cucumber.java.en.And;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -103,7 +101,6 @@ public class StepDefinitions {
     }
 
 
-
     @Given("I am on the page {string}")
     public void navigateToHomePage(String homepageURL) {
         driver.get(homepageURL);
@@ -126,17 +123,16 @@ public class StepDefinitions {
                 .stream()
                 .map(button -> button.getAttribute("onclick"))
                 .map(attr -> {
-                    if (attr == null) { return null; }
+                    if (attr == null) {
+                        return null;
+                    }
                     if (attr.contains("\"http")) {
                         return baseURL + attr.split("\"")[1];
-                    }
-                    else if (attr.contains("'http")) {
+                    } else if (attr.contains("'http")) {
                         return baseURL + attr.split("'")[1];
-                    }
-                    else if (attr.contains(".html'")) {
+                    } else if (attr.contains(".html'")) {
                         return baseURL + attr.split("'")[1];
-                    }
-                    else if (attr.contains(".html\"")) {
+                    } else if (attr.contains(".html\"")) {
                         return baseURL + attr.split("\"")[1];
                     }
                     return null;
@@ -155,12 +151,200 @@ public class StepDefinitions {
             if ((responseCode < 200 || responseCode > 399) && responseCode != 999) {
                 testFail = true;
                 System.out.println("\u001B[31mFAIL! (" + responseCode + ")\u001B[0m");
-            }
-            else
+            } else
                 System.out.println("\u001B[32mOK! (" + responseCode + ")\u001B[0m");
         }
         if (testFail) {
             fail("There were broken links on the page");
         }
     }
+
+    @When("user clicks on the {string} button")
+    public void the_user_click_on_the_button(String string) throws InterruptedException {
+        WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
+        shopButton.click();
+        Thread.sleep(1000);
+    }
+
+    @And("user clicks the {string} button")
+    public void userClicksOnAllButton(String arg0) throws InterruptedException {
+        WebElement allButton = driver.findElement(By.xpath("//a[normalize-space()='All']"));
+        Thread.sleep(2000);
+        allButton.click();
+        Thread.sleep(2000);
+    }
+
+    @Then("all products should be visible")
+    public void the_user_should_see_all_the_products() throws InterruptedException {
+        WebElement allProducts = driver.findElement(By.xpath("//a[normalize-space()='All']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new Object[]{allProducts});
+        Thread.sleep(2000);
+
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/products#";
+        assertEquals(expectedUrl, currentUrl);
+
+
+    }
+
+    @And("the user adds a product to the cart")
+    public void theUserAddsAProductToTheCart() throws InterruptedException {
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        WebElement fjallravenBag = driver.findElement(By.xpath("/html/body/main/div[1]/div/div/button"));
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",fjallravenBag);
+
+        fjallravenBag.click();
+
+    }
+
+    @And("the user clicks on {string}")
+    public void theUserClicksOn(String arg0) throws InterruptedException {
+
+        WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkCart);
+        checkCart.click();
+        Thread.sleep(2000);
+
+    }
+
+    @Then("the user removes the product from the shopping cart")
+    public void theUserRemovesTheProductFromTheShoppingCart() throws InterruptedException {
+        WebElement removeProduct = driver.findElement(By.xpath("//button[normalize-space()='Remove']"));
+        removeProduct.click();
+        Thread.sleep(2000);
+        WebElement emptyCartMessage = driver.findElement(By.xpath("/html[1]/body[1]/header[1]/div[1]/div[1]/div[1]/a[1]"));
+        assertTrue(emptyCartMessage.isDisplayed(), "The cart is not empty after removing the product!");
+    }
+
+    @And("the user clicks on the search bar")
+    public void theUserClicksOnTheSearchBar() throws InterruptedException {
+        WebElement searchButton = driver.findElement(By.cssSelector("#search"));
+        searchButton.sendKeys("Mens Cotton Jacket");
+        Thread.sleep(1000);
+    }
+
+    @And("the user types {string} into the search bar and presses the {string} key")
+    public void theUserTypesIntoTheSearchBarAndPressesTheKey(String productName, String enter) throws InterruptedException {
+        WebElement searchButton = driver.findElement(By.cssSelector("#search"));
+        searchButton.sendKeys("Mens Cotton Jacket");
+        Thread.sleep(1000);
+
+    }
+
+    @Then("the user should be navigated to the Shop page")
+    public void theUserShouldBeNavigatedToTheShopPage() {
+        String currentUrl = driver.getCurrentUrl();
+        assertTrue(currentUrl.contains("shop"), "The user was not navigated to the Shop page!");
+
+    }
+
+    @When("the user clicks on the {string} button")
+    public void theUserClicksOnTheButton(String button) throws InterruptedException {
+        WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
+        checkCart.click();
+        Thread.sleep(2000);
+    }
+
+    @And("the user clicks on the {string} button without filling in the required fields")
+    public void theUserClicksOnTheButtonWithoutFillingInTheRequiredFields(String submitButton) throws InterruptedException {
+        WebElement continueButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueButton);
+        Thread.sleep(2000);
+        continueButton.click();
+        Thread.sleep(2000);
+    }
+
+    @Then("the user should see the error message under each empty required fields")
+    public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
+        WebElement errorElement = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form"));
+        String expectedErrorMessage = "Valid first name is required.";
+
+        assertEquals("Valid first name is required.", expectedErrorMessage, errorElement.getText());
+        Thread.sleep(2000);
+
+    }
+
+    @When("the user adds {string} to the basket")
+    public void theUserAddsToTheBasket(String button) throws InterruptedException {
+
+        Thread.sleep(2000);
+        WebElement fjallravenBag = driver.findElement(By.xpath("/html/body/main/div[1]/div/div/button"));
+        fjallravenBag.click();
+    }
+
+    @And("the user clicks on {string} button")
+    public void theUserClicksOnButton(String button) throws InterruptedException {
+        WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", checkCart);
+        checkCart.click();
+        Thread.sleep(2000);
+    }
+
+    @And("the user fills in all required fields")
+    public void theUserFillsInAllRequiredFields() throws InterruptedException {
+        WebElement firstName = driver.findElement(By.id("firstName"));
+        firstName.sendKeys("Fahima");
+        Thread.sleep(2000);
+
+        WebElement lastName = driver.findElement(By.id("lastName"));
+        lastName.sendKeys("Sharegh");
+        Thread.sleep(2000);
+
+        WebElement emailAdd = driver.findElement(By.id("email"));
+        emailAdd.sendKeys("fahima.sharegh@iths.se");
+        Thread.sleep(2000);
+
+        WebElement add = driver.findElement(By.id("address"));
+        add.sendKeys("dengata 123");
+        Thread.sleep(2000);
+
+        WebElement country = driver.findElement(By.id("country"));
+        country.sendKeys("Sweden");
+        Thread.sleep(2000);
+
+        WebElement city = driver.findElement(By.id("city"));
+        city.sendKeys("Stockholm");
+        Thread.sleep(2000);
+
+        WebElement zip = driver.findElement(By.id("zip"));
+        zip.sendKeys("14321");
+        Thread.sleep(3000);
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement payment = driver.findElement(By.xpath("//label[normalize-space()='Debit card']"));
+        js.executeScript("arguments[0].click();", payment);
+
+        WebElement cardName = driver.findElement(By.id("cc-name"));
+        cardName.sendKeys("what");
+        Thread.sleep(2000);
+
+        WebElement cardNumber = driver.findElement(By.id("cc-number"));
+        cardNumber.sendKeys("1432177777");
+        Thread.sleep(2000);
+
+        WebElement expirationDate = driver.findElement(By.id("cc-expiration"));
+        expirationDate.sendKeys("26/26");
+        Thread.sleep(2000);
+
+        WebElement cvvText = driver.findElement(By.id("cc-cvv"));
+        cvvText.sendKeys("123");
+        Thread.sleep(2000);
+
+    }
+
+    @Then("the user clicks on the {string}")
+    public void theUserClicksOnThe(String arg0) throws InterruptedException {
+        WebElement submitButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+        Thread.sleep(2000);
+        submitButton.click();
+        Thread.sleep(2000);
+
+
+        String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/checkout?paymentMethod=on";
+        assertEquals(expectedUrl, driver.getCurrentUrl());
+
+    }
+
 }
