@@ -19,16 +19,15 @@ Feature: Checkout Process
     When I fill in the "First name" field with "Baraa"
     And I fill in the "Last name" field with "Abdullatif"
     And I fill in the "Email" field with "baraa.abdullatif@iths.se"
-    And I fill in the "Address" field with "1234 Main St"
+    And I fill in the "Address" field with "Lab la bla"
     And I fill in the "Country" field with "Sweden"
     And I fill in the "City" field with "Gothenburg"
     And I fill in the "Zip" field with "44444"
     Then the billing details should be filled in correctly
 
-  Scenario: Remove an item from the basket
+  Scenario: Validate available payment options
     Given I am on the checkout page
-    When I remove an item from the basket
-    Then the basket should be empty
+    Then all payment methods should be selectable
 
   Scenario: Complete the checkout process
     Given I have filled out my billing details
