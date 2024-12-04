@@ -111,16 +111,45 @@ public class StepDefinitions {
 
     @Then("I should not get an HTTP response error for any of the links")
     public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
-        List<WebElement> links = driver.findElements(By.tagName("a"));
+
+        // Get urls from a-elements
+        List<String> urls = new ArrayList<>(driver
+                .findElements(By.tagName("a"))
+                .stream()
+                .map(element -> element.getAttribute("href"))
+                .toList());
+
+        // Add urls from buttons with onclick event
+        String baseURL = driver.getCurrentUrl();
+        urls.addAll(driver
+                .findElements(By.tagName("button"))
+                .stream()
+                .map(button -> button.getAttribute("onclick"))
+                .map(attr -> {
+                    if (attr == null) { return null; }
+                    if (attr.contains("\"http")) {
+                        return baseURL + attr.split("\"")[1];
+                    }
+                    else if (attr.contains("'http")) {
+                        return baseURL + attr.split("'")[1];
+                    }
+                    else if (attr.contains(".html'")) {
+                        return baseURL + attr.split("'")[1];
+                    }
+                    else if (attr.contains(".html\"")) {
+                        return baseURL + attr.split("\"")[1];
+                    }
+                    return null;
+                }).toList());
+
         boolean testFail = false;
-        for (WebElement link : links) {
-            String href = link.getAttribute("href");
-            if (href == null || !href.startsWith("http")) {
+        for (String url : urls) {
+            if (url == null || !url.startsWith("http")) {
                 continue;
             }
-            System.out.print("Testing link:\t" + href + "\t");
+            System.out.print("Testing link:\t" + url + "\t");
             HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(href)).build();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             int responseCode = response.statusCode();
             if ((responseCode < 200 || responseCode > 399) && responseCode != 999) {
