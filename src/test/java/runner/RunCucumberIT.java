@@ -1,17 +1,14 @@
 package runner;
-import org.junit.runner.RunWith;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
 
-
-//The advantages with this Cucumber approach is that much of the code that was repeated in the unit test can easily be reused. 
-//The code sort of refactored itself, which was a very nice surprise.
-
-//Getting the project to run was probably the hardest thing all along. It took me way to long to find out about the glue.
-
-@RunWith(Cucumber.class)@CucumberOptions(
-    features = "src/test/resources/features",
-    glue = "steps")
+@Suite
+@IncludeEngines("cucumber")
+@SelectClasspathResource("features")
+@ConfigurationParameter(key = "cucumber.plugin", value = "pretty")
+@ConfigurationParameter(key = "cucumber.glue", value = "steps")
 public class RunCucumberIT {
 }
