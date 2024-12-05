@@ -1,3 +1,4 @@
+# Written by Anders
 Feature: Issues from Anders
   As a user,
   I want to navigate through the webshop and verify its functionality

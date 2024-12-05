@@ -27,11 +27,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class StepDefinitions {
     private WebDriver driver;
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
 
-    @Before
+    @Before //Written by Anders
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -43,37 +44,37 @@ public class StepDefinitions {
         driver = new ChromeDriver(options);
     }
 
-    @After
+    @After //Written by Anders
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
 
-    @Given("the user navigates to the shop homepage")
+    @Given("the user navigates to the shop homepage") //Written by Carl-Johan
     public void navigateToHomepage() {
         driver.get(URL);
     }
 
-    @Then("the page title should be {string}")
+    @Then("the page title should be {string}") //Written by Carl-Johan
     public void verifyPageTitle(String expectedTitle) {
         assertEquals(expectedTitle, driver.getTitle());
     }
 
-    @When("the user clicks on the {string} link")
+    @When("the user clicks on the {string} link") //Written by Carl-Johan
     public void clickOnLink(String linkText) {
         WebElement link = driver.findElement(By.linkText(linkText));
         link.click();
     }
 
-    @When("the user clicks on the {string} button")
+    @When("the user clicks on the {string} button") //Written by Carl-Johan
     public void clickOnButton(String buttonText) {
         // Locate the button by its visible text and class
         WebElement button = driver.findElement(By.xpath("//a[contains(@class, 'btn') and contains(text(), '" + buttonText + "')]"));
         button.click();
     }
 
-    @Then("the page route should be {string}")
+    @Then("the page route should be {string}") //Written by Carl-Johan
     public void verifyPageRoute(String expectedRoute) {
         // Get the current URL
         String currentUrl = driver.getCurrentUrl();
@@ -83,16 +84,16 @@ public class StepDefinitions {
         assertEquals(expectedRoute, currentRoute, "The page route did not match the expected route.");
     }
 
-    @When("the user searches for {string}")
+    @When("the user searches for {string}") //Written by Carl-Johan
     public void searchForProduct(String productName) {
         driver.get(URL + "products");
 
-        By searchBoxLocator = By.id("search");
+        By searchBoxLocator = By.id("search"); //Written by Carl-Johan
         WebElement searchBox = driver.findElement(searchBoxLocator);
         searchBox.sendKeys(productName + Keys.RETURN);
     }
 
-    @Then("the search results should display {string}")
+    @Then("the search results should display {string}") //Written by Carl-Johan
     public void verifySearchResults(String productName) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String xpathExpression = "//h3[contains(@class, 'card-title') and contains(text(), '" + productName + "')]";
@@ -101,12 +102,12 @@ public class StepDefinitions {
     }
 
 
-    @Given("I am on the page {string}")
+    @Given("I am on the page {string}") //Written by Anders
     public void navigateToHomePage(String homepageURL) {
         driver.get(homepageURL);
     }
 
-    @Then("I should not get an HTTP response error for any of the links")
+    @Then("I should not get an HTTP response error for any of the links") //Written by Anders
     public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
 
         // Get urls from a-elements
@@ -116,7 +117,7 @@ public class StepDefinitions {
                 .map(element -> element.getAttribute("href"))
                 .toList());
 
-        // Add urls from buttons with onclick event
+        // Add urls from buttons with onclick event 
         String baseURL = driver.getCurrentUrl();
         urls.addAll(driver
                 .findElements(By.tagName("button"))
@@ -158,18 +159,18 @@ public class StepDefinitions {
             fail("There were broken links on the page");
         }
     }
-        @Given("user navigates to the shop homepage")
+        @Given("user navigates to the shop homepage") //Written by Fahima
         public void the_user_navigates_to_the_shop_homepage() {
             driver.manage().window().maximize();
             driver.get(URL);
         }
 
-        @When("user clicks on the {string} button")
+        @When("user clicks on the {string} button") //Written by Fahima
         public void the_user_click_on_the_button(String string) throws InterruptedException {
             WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
             shopButton.click();
             Thread.sleep(1000);
-    } @And("user clicks the {string} button")
+    } @And("user clicks the {string} button") //Written by Fahima
     public void userClicksOnAllButton(String arg0) throws InterruptedException {
         WebElement allButton = driver.findElement(By.xpath("//a[normalize-space()='All']"));
         Thread.sleep(2000);
@@ -177,7 +178,7 @@ public class StepDefinitions {
         Thread.sleep(2000);
     }
 
-    @Then("all products should be visible")
+    @Then("all products should be visible") //Written by Fahima
     public void the_user_should_see_all_the_products() throws InterruptedException {
         WebElement allProducts = driver.findElement(By.xpath("//a[normalize-space()='All']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new Object[]{allProducts});
@@ -188,7 +189,7 @@ public class StepDefinitions {
         assertEquals(expectedUrl, currentUrl);
     }
 
-    @Then("the user types {string} into the search bar and presses the {string} key")
+    @Then("the user types {string} into the search bar and presses the {string} key") //Written by Fahima
     public void theUserTypesIntoTheSearchBarAndPressesTheKey(String productName, String enter) throws InterruptedException {
         WebElement searchButton = driver.findElement(By.cssSelector("#search"));
         searchButton.sendKeys("Mens Cotton Jacket");
@@ -198,7 +199,7 @@ public class StepDefinitions {
 
     }
 
-    @When("the user adds {string} to the basket")
+    @When("the user adds {string} to the basket") //Written by Fahima
     public void theUserAddsToTheBasket(String product) throws InterruptedException {
 
         Thread.sleep(2000);
@@ -206,7 +207,7 @@ public class StepDefinitions {
         backPack.click();
     }
 
-    @And("the user clicks on the Checkout button")
+    @And("the user clicks on the Checkout button") //Written by Fahima
     public void theUserClicksOnTheButton() throws InterruptedException {
         WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
         checkCart.click();
@@ -214,7 +215,7 @@ public class StepDefinitions {
 
     }
 
-    @And("the user removes the product from the shopping cart")
+    @And("the user removes the product from the shopping cart") //Written by Fahima
     public void theUserRemovesTheProductFromTheShoppingCart() throws InterruptedException {
         WebElement removeProduct = driver.findElement(By.xpath("//button[normalize-space()='Remove']"));
         removeProduct.click();
@@ -225,7 +226,7 @@ public class StepDefinitions {
         Thread.sleep(2000);
     }
 
-    @And("the user clicks on the Continue to Continue button")
+    @And("the user clicks on the Continue to Continue button") //Written by Fahima
     public void theUserClicksOnTheContinueButton() throws InterruptedException {
         WebElement continueButton = driver.findElement(By.cssSelector("button[type='submit']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueButton);
@@ -233,7 +234,7 @@ public class StepDefinitions {
         continueButton.click();
     }
 
-    @Then("the user should see the error message under each empty required fields")
+    @Then("the user should see the error message under each empty required fields") //Written by Fahima
     public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
         WebElement errorElement = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form"));
         Thread.sleep(2000);
@@ -245,7 +246,7 @@ public class StepDefinitions {
 
     }
 
-    @When("the user fills in all required fields")
+    @When("the user fills in all required fields") //Written by Fahima
     public void fillInRequiredFields() throws InterruptedException {
         driver.findElement(By.id("firstName")).sendKeys("Fahima");
         driver.findElement(By.id("lastName")).sendKeys("Sharegh");
@@ -266,7 +267,7 @@ public class StepDefinitions {
         // assertEquals(expectedUrl, driver.getCurrentUrl());
     }
 
-    @Then("the user ended up in the same page")
+    @Then("the user ended up in the same page") //Written by Fahima
     public void endedUpInSamePage() throws InterruptedException {
         String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/checkout?paymentMethod=on";
         assertEquals(expectedUrl, driver.getCurrentUrl());
