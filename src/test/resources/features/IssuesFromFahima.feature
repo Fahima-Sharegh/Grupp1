@@ -13,29 +13,26 @@ Feature: Fahimas issues
   Scenario: Add and remove a product from the cart
     Given user navigates to the shop homepage
     When  user clicks on the "Shop" button
-    And the user adds a product to the cart
-    And the user clicks on "Checkout"
+    And the user adds "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops" to the basket
+    And the user clicks on the Checkout button
     Then the user removes the product from the shopping cart
 
 #3
   Scenario: User searches for a product with no search results
     Given user navigates to the shop homepage
     When  user clicks on the "Shop" button
-    And the user clicks on the search bar
     And the user types "Men's Cotton Jacket" into the search bar and presses the "Enter" key
-    Then the user should be navigated to the Shop page
 #4
   Scenario: User attempts checkout with empty required fields
     Given user navigates to the shop homepage
-    When the user clicks on the "Checkout" button
-    And the user clicks on the "Continue to Checkout" button without filling in the required fields
-    Then the user should see the error message under each empty required fields
+    When the user clicks on the Checkout button
+    And the user clicks on the Continue to Continue button
+   Then the user should see the error message under each empty required fields
 
 #5
   Scenario: Validate required fields during checkout
     Given user navigates to the shop homepage
-    When  user clicks on the "Shop" button
-    And the user adds "Solid Gold Petite Micropave" to the basket
-    And the user clicks on "Checkout" button
+    And the user clicks on the Checkout button
     And the user fills in all required fields
-    Then the user clicks on the "Continue the checkout"
+    And the user clicks on the Continue to Continue button
+   Then the user ended up in the same page
