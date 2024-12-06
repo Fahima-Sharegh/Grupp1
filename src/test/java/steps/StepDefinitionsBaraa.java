@@ -4,7 +4,13 @@ package steps;
 import java.time.Duration;
 import java.util.List;
 
-import org.openqa.selenium.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,15 +23,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class StepDefinitionsBaraa {
 
     private WebDriver driver;
     private WebDriverWait wait;
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
 
-    @Before
+    @Before //Written by Anders
     public void setup() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -37,14 +41,14 @@ public class StepDefinitionsBaraa {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    @After
+    @After //Written by Anders
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
 
-    @Given("I am on the homepage")
+    @Given("I am on the homepage") //Written by Baraa
     public void iAmOnTheHomepage() {
         driver.get(URL);
         String title = driver.getTitle();
@@ -52,14 +56,14 @@ public class StepDefinitionsBaraa {
         assertEquals("The Shop", title, "The homepage title does not match.");
     }
 
-    @When("I click the {string} link")
+    @When("I click the {string} link") //Written by Baraa
     public void iClickTheLink(String linkText) {
         WebElement link = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='" + linkText + "']")));
         System.out.println("Clicking link: " + linkText);
         wait.until(ExpectedConditions.elementToBeClickable(link)).click();
     }
 
-    @When("I click the {string}")
+    @When("I click the {string}") //Written by Baraa
     public void iClickAddProduct(String buttonText) throws InterruptedException {
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//button[contains(text(), '➕ Add to cart')]")));
@@ -69,7 +73,7 @@ public class StepDefinitionsBaraa {
         System.out.println("Successfully clicked the button: " + buttonText);
     }
 
-    @Then("the product should be added to the cart")
+    @Then("the product should be added to the cart") //Written by Baraa
     public void the_product_should_be_added_to_the_cart() {
         WebElement checkoutButton = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//a[contains(@class, 'btn') and contains(@class, 'btn-warning')]")));
@@ -80,26 +84,26 @@ public class StepDefinitionsBaraa {
     }
 
 
-    @When("I click on the {string} button")
+    @When("I click on the {string} button") //Written by Baraa
     public void iClickOnTheButton(String buttonText) {
         WebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(text(), '" + buttonText + "')]")));
         System.out.println("Clicking button: " + buttonText);
         wait.until(ExpectedConditions.elementToBeClickable(button)).click();
     }
 
-    @Then("I should be redirected to the checkout page")
+    @Then("I should be redirected to the checkout page") //Written by Baraa
     public void iShouldBeRedirectedToTheCheckoutPage() {
         String currentUrl = driver.getCurrentUrl();
         System.out.println("Redirected URL: " + currentUrl);
         assertTrue(currentUrl.contains("/checkout"), "User is not redirected to the checkout page.");
     }
 
-    @Given("I am on the checkout page")
+    @Given("I am on the checkout page") //Written by Baraa
     public void iAmOnTheCheckoutPage() {
         driver.get(URL + "checkout");
     }
 
-    @When("I fill in the {string} field with {string}")
+    @When("I fill in the {string} field with {string}") //Written by Baraa
     public void iFillInTheFieldWith(String fieldName, String value) {
         WebElement field = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(getFieldId(fieldName))));
         System.out.println("Filling field: " + fieldName + " with value: " + value);
@@ -109,6 +113,7 @@ public class StepDefinitionsBaraa {
         System.out.println("Field value after sending keys: " + field.getAttribute("value"));
     }
 
+    //Written by Baraa
     private String getFieldId(String fieldName) {
         switch (fieldName) {
             case "First name":
@@ -138,7 +143,7 @@ public class StepDefinitionsBaraa {
         }
     }
 
-    @Given("I have filled out my billing details")
+    @Given("I have filled out my billing details") //Written by Baraa
     public void iHaveFilledOutMyBillingDetails() {
         iAmOnTheCheckoutPage();
         iFillInTheFieldWith("First name", "Baraa");
@@ -151,7 +156,7 @@ public class StepDefinitionsBaraa {
         System.out.println("Billing details have been filled out successfully.");
     }
 
-    @Then("the billing details should be filled in correctly")
+    @Then("the billing details should be filled in correctly") //Written by Baraa
     public void theBillingDetailsShouldBeFilledInCorrectly() {
         validateFieldValue("First name", "Baraa");
         validateFieldValue("Last name", "Abdullatif");
@@ -162,13 +167,14 @@ public class StepDefinitionsBaraa {
         validateFieldValue("Zip", "44444");
     }
 
+    //Written by Baraa
     private void validateFieldValue(String fieldName, String expectedValue) {
         WebElement field = driver.findElement(By.id(getFieldId(fieldName)));
         String actualValue = field.getAttribute("value");
         System.out.println("Validating field: " + fieldName + " | Expected: " + expectedValue + " | Actual: " + actualValue);
         assertEquals(expectedValue, actualValue, fieldName + " value is incorrect.");
     }
-
+    //Written by Baraa
     @Then("I should see an error message for the {string} field")
     public void iShouldSeeAnErrorMessageForTheField(String fieldName) {
         try {
@@ -183,7 +189,7 @@ public class StepDefinitionsBaraa {
             throw e;
         }
     }
-
+    //Written by Baraa
     @Then("all payment methods should be selectable")
     public void allPaymentMethodsShouldBeSelectable() {
         try {
@@ -200,7 +206,7 @@ public class StepDefinitionsBaraa {
         }
     }
 
-
+    //Written by Baraa
     @When("I select {string} as the {string}")
     public void iSelectAsThe(String value, String fieldName) {
         if (fieldName.equalsIgnoreCase("Payment method")) {
@@ -225,7 +231,7 @@ public class StepDefinitionsBaraa {
             throw new IllegalArgumentException("Field not supported: " + fieldName);
         }
     }
-
+    //Written by Baraa
     @When("I remove an item from the basket")
     public void iRemoveAnItemFromTheBasket() {
         try {
@@ -238,7 +244,7 @@ public class StepDefinitionsBaraa {
             System.err.println("Error removing item from the basket: " + e.getMessage());
         }
     }
-
+    //Written by Baraa
     @Then("the basket should be empty")
     public void theBasketShouldBeEmpty() {
         try {
@@ -250,7 +256,7 @@ public class StepDefinitionsBaraa {
             System.err.println("Error validating basket content: " + e.getMessage());
         }
     }
-
+    //Written by Baraa
     @When("I click the {string} button")
     public void iClickTheButton(String buttonText) {
         try {
@@ -261,7 +267,7 @@ public class StepDefinitionsBaraa {
             System.err.println("Error clicking button: " + buttonText + " - " + e.getMessage());
         }
     }
-
+    //Written by Baraa
     @Then("the checkout process should be completed successfully")
     public void theCheckoutProcessShouldBeCompletedSuccessfully() {
         try {

@@ -1,6 +1,8 @@
 package com.example.produktapi.controller;
-import com.example.produktapi.model.Product;
-import com.example.produktapi.repository.ProductRepository;
+import java.util.List;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +10,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.example.produktapi.model.Product;
+import com.example.produktapi.repository.ProductRepository;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,7 +34,7 @@ public class ProductControllerTest {
         productRepository.deleteAll();
     }
 
-    @Test
+    @Test //Written by Baraa
     public void testGetAllProducts_NoProductsExist() throws Exception {
         productRepository.deleteAll();
 
@@ -40,7 +43,7 @@ public class ProductControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
+    @Test  //Written by Baraa
     public void testGetAllProducts_MultipleProductsExist() throws Exception {
         productRepository.saveAll(List.of(
                 new Product("Product A", 100.0, "Category A", "Description A", "imageA.jpg"),
@@ -53,7 +56,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)));
     }
 
-    @Test
+    @Test //Written by Baraa
     public void testGetProductById_ValidProductId() throws Exception {
         Product product = new Product("Valid Product", 99.99, "Valid Category", "Valid Description", "valid.jpg");
         product = productRepository.save(product);
@@ -65,7 +68,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.price").value(99.99));
     }
 
-    @Test
+    @Test  //Written by Baraa
     public void testGetProductById_NonExistentProductId() throws Exception {
         mockMvc.perform(get("/products/9999")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -73,7 +76,7 @@ public class ProductControllerTest {
                 .andExpect(content().string(containsString("Produkt med id 9999 hittades inte")));
     }
 
-    @Test
+    @Test  //Written by Baraa
     public void testGetProductById_InvalidProductId() throws Exception {
         mockMvc.perform(get("/products/-1")
                         .contentType(MediaType.APPLICATION_JSON))
