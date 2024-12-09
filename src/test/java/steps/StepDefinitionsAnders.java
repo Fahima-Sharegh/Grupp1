@@ -14,7 +14,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,6 +44,64 @@ public class StepDefinitionsAnders {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    @Given("I am on the page {string}") //Written by Anders
+    public void navigateToHomePage(String homepageURL) {
+        driver.get(homepageURL);
+    }
+
+    @Then("I should not get an HTTP response error for any of the links") //Written by Anders
+    public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
+
+        // Get urls from a-elements
+        List<String> urls = new ArrayList<>(driver
+                .findElements(By.tagName("a"))
+                .stream()
+                .map(element -> element.getAttribute("href"))
+                .toList());
+
+        // Add urls from buttons with onclick event
+        String baseURL = driver.getCurrentUrl();
+        urls.addAll(driver
+                .findElements(By.tagName("button"))
+                .stream()
+                .map(button -> button.getAttribute("onclick"))
+                .map(attr -> {
+                    if (attr == null) {
+                        return null;
+                    }
+                    if (attr.contains("\"http")) {
+                        return baseURL + attr.split("\"")[1];
+                    } else if (attr.contains("'http")) {
+                        return baseURL + attr.split("'")[1];
+                    } else if (attr.contains(".html'")) {
+                        return baseURL + attr.split("'")[1];
+                    } else if (attr.contains(".html\"")) {
+                        return baseURL + attr.split("\"")[1];
+                    }
+                    return null;
+                }).toList());
+
+        boolean testFail = false;
+        for (String url : urls) {
+            if (url == null || !url.startsWith("http")) {
+                continue;
+            }
+            System.out.print("Testing link:\t" + url + "\t");
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            int responseCode = response.statusCode();
+            if ((responseCode < 200 || responseCode > 399) && responseCode != 999) {
+                testFail = true;
+                System.out.println("\u001B[31mFAIL! (" + responseCode + ")\u001B[0m");
+            } else
+                System.out.println("\u001B[32mOK! (" + responseCode + ")\u001B[0m");
+        }
+        if (testFail) {
+            fail("There were broken links on the page");
+        }
     }
 
     @Given("I navigate to the checkout page")
