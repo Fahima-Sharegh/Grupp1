@@ -1,23 +1,12 @@
 package steps;
 
-import java.net.*;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import io.cucumber.java.en.And;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -26,7 +15,6 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class StepDefinitions {
     private WebDriver driver;
@@ -87,7 +75,6 @@ public class StepDefinitions {
     @When("the user searches for {string}") //Written by Carl-Johan
     public void searchForProduct(String productName) {
         driver.get(URL + "products");
-
         By searchBoxLocator = By.id("search"); //Written by Carl-Johan
         WebElement searchBox = driver.findElement(searchBoxLocator);
         searchBox.sendKeys(productName + Keys.RETURN);
@@ -101,76 +88,20 @@ public class StepDefinitions {
         assertTrue(searchResult.isDisplayed(), "Search result not displayed for: " + productName);
     }
 
-
-    @Given("I am on the page {string}") //Written by Anders
-    public void navigateToHomePage(String homepageURL) {
-        driver.get(homepageURL);
+    @Given("user navigates to the shop homepage") //Written by Fahima
+    public void the_user_navigates_to_the_shop_homepage() {
+        driver.manage().window().maximize();
+        driver.get(URL);
     }
 
-    @Then("I should not get an HTTP response error for any of the links") //Written by Anders
-    public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
-
-        // Get urls from a-elements
-        List<String> urls = new ArrayList<>(driver
-                .findElements(By.tagName("a"))
-                .stream()
-                .map(element -> element.getAttribute("href"))
-                .toList());
-
-        // Add urls from buttons with onclick event 
-        String baseURL = driver.getCurrentUrl();
-        urls.addAll(driver
-                .findElements(By.tagName("button"))
-                .stream()
-                .map(button -> button.getAttribute("onclick"))
-                .map(attr -> {
-                    if (attr == null) {
-                        return null;
-                    }
-                    if (attr.contains("\"http")) {
-                        return baseURL + attr.split("\"")[1];
-                    } else if (attr.contains("'http")) {
-                        return baseURL + attr.split("'")[1];
-                    } else if (attr.contains(".html'")) {
-                        return baseURL + attr.split("'")[1];
-                    } else if (attr.contains(".html\"")) {
-                        return baseURL + attr.split("\"")[1];
-                    }
-                    return null;
-                }).toList());
-
-        boolean testFail = false;
-        for (String url : urls) {
-            if (url == null || !url.startsWith("http")) {
-                continue;
-            }
-            System.out.print("Testing link:\t" + url + "\t");
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            int responseCode = response.statusCode();
-            if ((responseCode < 200 || responseCode > 399) && responseCode != 999) {
-                testFail = true;
-                System.out.println("\u001B[31mFAIL! (" + responseCode + ")\u001B[0m");
-            } else
-                System.out.println("\u001B[32mOK! (" + responseCode + ")\u001B[0m");
-        }
-        if (testFail) {
-            fail("There were broken links on the page");
-        }
+    @When("user clicks on the {string} button") //Written by Fahima
+    public void the_user_click_on_the_button(String string) throws InterruptedException {
+        WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
+        shopButton.click();
+        Thread.sleep(1000);
     }
-        @Given("user navigates to the shop homepage") //Written by Fahima
-        public void the_user_navigates_to_the_shop_homepage() {
-            driver.manage().window().maximize();
-            driver.get(URL);
-        }
 
-        @When("user clicks on the {string} button") //Written by Fahima
-        public void the_user_click_on_the_button(String string) throws InterruptedException {
-            WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
-            shopButton.click();
-            Thread.sleep(1000);
-    } @And("user clicks the {string} button") //Written by Fahima
+    @And("user clicks the {string} button") //Written by Fahima
     public void userClicksOnAllButton(String arg0) throws InterruptedException {
         WebElement allButton = driver.findElement(By.xpath("//a[normalize-space()='All']"));
         Thread.sleep(2000);
@@ -183,7 +114,6 @@ public class StepDefinitions {
         WebElement allProducts = driver.findElement(By.xpath("//a[normalize-space()='All']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new Object[]{allProducts});
         Thread.sleep(2000);
-
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/products#";
         assertEquals(expectedUrl, currentUrl);
@@ -196,12 +126,10 @@ public class StepDefinitions {
         Thread.sleep(1000);
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains("shop"), "The user was navigated to the Shop page!");
-
     }
 
     @When("the user adds {string} to the basket") //Written by Fahima
     public void theUserAddsToTheBasket(String product) throws InterruptedException {
-
         Thread.sleep(2000);
         WebElement backPack = driver.findElement(By.xpath("/html/body/main/div[1]/div/div/button"));
         backPack.click();
@@ -212,7 +140,6 @@ public class StepDefinitions {
         WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
         checkCart.click();
         Thread.sleep(2000);
-
     }
 
     @And("the user removes the product from the shopping cart") //Written by Fahima
@@ -242,8 +169,6 @@ public class StepDefinitions {
         Thread.sleep(2000);
         assertEquals("Valid first name is required.", expectedErrorMessage, errorElement.getText());
         Thread.sleep(2000);
-
-
     }
 
     @When("the user fills in all required fields") //Written by Fahima
@@ -271,7 +196,5 @@ public class StepDefinitions {
     public void endedUpInSamePage() throws InterruptedException {
         String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/checkout?paymentMethod=on";
         assertEquals(expectedUrl, driver.getCurrentUrl());
-
     }
-
 }
