@@ -21,13 +21,13 @@ Feature: Fahimas issues
   Scenario: User searches for a product with no search results
     Given user navigates to the shop homepage
     When  user clicks on the "Shop" button
-    And the user types "Men's Cotton Jacket" into the search bar and presses the "Enter" key
-    #Then the user should be navigated to the Shop page
+    Then the user types "Men's Cotton Jacket" into the search bar and presses the "Enter" key
+
 #4
   Scenario: User attempts checkout with empty required fields
     Given user navigates to the shop homepage
     When the user clicks on the "Checkout" button
-    And the user clicks on the "Continue to Checkout" button
+    And the user clicks on the Continue to Checkout button
     Then the user should see the error message under each empty required fields
 
 #5
@@ -36,4 +36,4 @@ Feature: Fahimas issues
     When  user clicks on the "Shop" button
     And the user clicks on the "Checkout" button
     And the user fills in all required fields
-    Then the user clicks on the "Continue to Checkout" button
+    Then the user clicks on the Continue to Checkout button

@@ -197,14 +197,15 @@ public void the_user_should_see_all_the_products() throws InterruptedException {
 public void theUserTypesIntoTheSearchBarAndPressesTheKey(String productName, String enter) throws InterruptedException {
     WebElement searchButton = driver.findElement(By.cssSelector("#search"));
     searchButton.sendKeys("Mens Cotton Jacket");
+
     Thread.sleep(1000);
     String currentUrl = driver.getCurrentUrl();
     assertTrue(currentUrl.contains("shop"), "The user was navigated to the Shop page!");
 
 }
 
-@When("the user adds {string} to the basket")
-public void theUserAddsToTheBasket(String product) throws InterruptedException {
+@When("the user adds a product to the basket")
+public void theUserAddsToTheBasket() throws InterruptedException {
 
     Thread.sleep(2000);
     WebElement backPack = driver.findElement(By.xpath("/html/body/main/div[1]/div/div/button"));
@@ -230,7 +231,7 @@ public void theUserRemovesTheProductFromTheShoppingCart() throws InterruptedExce
     Thread.sleep(2000);
 }
 
-@And("the user clicks on the Continue to Continue button")
+@And("the user clicks on the Continue to Checkout button")
 public void theUserClicksOnTheContinueButton() throws InterruptedException {
     WebElement continueButton = driver.findElement(By.cssSelector("button[type='submit']"));
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueButton);
@@ -277,7 +278,8 @@ public void endedUpInSamePage() throws InterruptedException {
 
 }
 
-    @And("the user adds a product to the basket")
-    public void theUserAddsAProductToTheBasket() {
+
+    @Then("the user should be navigated to the Shop page")
+    public void theUserShouldBeNavigatedToTheShopPage() {
     }
 }
