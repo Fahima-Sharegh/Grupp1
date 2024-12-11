@@ -6,14 +6,14 @@ Feature: Fahimas issues
 
 #1
   Scenario: the users should see all products
-    Given user navigates to the shop homepage
-    When  user clicks on the "Shop" button
+    Given the user navigates to the shop homepage
+    When user clicks on the "Shop" button
     And user clicks the "All" button
     Then all products should be visible
 
 #2
   Scenario: Add and remove a product from the cart
-    Given user navigates to the shop homepage
+    Given the user navigates to the shop homepage
     When user clicks on the "Shop" button
     And the user adds a product to the basket
     And the user clicks on the "Checkout" button
@@ -21,21 +21,22 @@ Feature: Fahimas issues
 
 #3
   Scenario: User searches for a product with no search results
-    Given user navigates to the shop homepage
-    When  user clicks on the "Shop" button
+    Given the user navigates to the shop homepage
+    When user clicks on the "Shop" button
     Then the user types "Men's Cotton Jacket" into the search bar and presses the "Enter" key
 
 #4
   Scenario: User attempts checkout with empty required fields
-    Given user navigates to the shop homepage
-    When the user clicks on the "Checkout" button
+    Given the user navigates to the shop homepage
+    And the user clicks on the "Checkout" button
     And the user clicks on the Continue to Checkout button
     Then the user should see the error message under each empty required fields
 
 #5
   Scenario: Validate required fields during checkout
-    Given user navigates to the shop homepage
-    When  user clicks on the "Shop" button
+    Given the user navigates to the shop homepage
+    When user clicks on the "Shop" button
     And the user clicks on the "Checkout" button
     And the user fills in all required fields
-    Then the user clicks on the Continue to Checkout button
+    And the user clicks on the Continue to Checkout button
+    # Then....?
