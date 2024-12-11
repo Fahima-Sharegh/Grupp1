@@ -39,4 +39,4 @@ Feature: Fahimas issues
     And the user clicks on the "Checkout" button
     And the user fills in all required fields
     And the user clicks on the Continue to Checkout button
-    # Then....?
+    # Then the user should not see the error message under any of the required fields ?
