@@ -212,22 +212,22 @@ public class StepDefinitions {
     public void the_user_click_on_the_button(String string) throws InterruptedException {
         WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
         shopButton.click();
-        Thread.sleep(200);
+        Thread.sleep(1000);
     }
 
     @And("user clicks the {string} button")
     public void userClicksOnAllButton(String arg0) throws InterruptedException {
         WebElement allButton = driver.findElement(By.xpath("//a[normalize-space()='All']"));
-        Thread.sleep(200);
+        Thread.sleep(2000);
         allButton.click();
-        Thread.sleep(200);
+        Thread.sleep(2000);
     }
 
     @Then("all products should be visible")
     public void the_user_should_see_all_the_products() throws InterruptedException {
         WebElement allProducts = driver.findElement(By.xpath("//a[normalize-space()='All']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", new Object[]{allProducts});
-        Thread.sleep(200);
+        Thread.sleep(2000);
         String currentUrl = driver.getCurrentUrl();
         String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/products#";
         assertEquals(expectedUrl, currentUrl);
@@ -237,14 +237,14 @@ public class StepDefinitions {
     public void theUserTypesIntoTheSearchBarAndPressesTheKey(String productName, String enter) throws InterruptedException {
         WebElement searchButton = driver.findElement(By.cssSelector("#search"));
         searchButton.sendKeys("Mens Cotton Jacket");
-        Thread.sleep(100);
+        Thread.sleep(1000);
         String currentUrl = driver.getCurrentUrl();
         assertTrue(currentUrl.contains("shop"), "The user was navigated to the Shop page!");
     }
 
     @And("the user adds a product to the basket")
     public void theUserAddsToTheBasket() throws InterruptedException {
-        Thread.sleep(200);
+        Thread.sleep(2000);
         WebElement backPack = driver.findElement(By.xpath("/html/body/main/div[1]/div/div/button"));
         backPack.click();
     }
@@ -253,36 +253,36 @@ public class StepDefinitions {
     public void theUserClicksOnTheButton() throws InterruptedException {
         WebElement checkCart = driver.findElement(By.xpath("//a[contains(text(),'\uD83D\uDED2 Checkout')]"));
         checkCart.click();
-        Thread.sleep(200);
+        Thread.sleep(2000);
     }
 
     @Then("the user removes the product from the shopping cart")
     public void theUserRemovesTheProductFromTheShoppingCart() throws InterruptedException {
         WebElement removeProduct = driver.findElement(By.xpath("//button[normalize-space()='Remove']"));
         removeProduct.click();
-        Thread.sleep(200);
+        Thread.sleep(2000);
         WebElement emptyCartMessage = driver.findElement(By.xpath("/html[1]/body[1]/header[1]/div[1]/div[1]/div[1]/a[1]"));
-        Thread.sleep(200);
+        Thread.sleep(2000);
         assertTrue(emptyCartMessage.isDisplayed(), "The cart is not empty after removing the product!");
-        Thread.sleep(200);
+        Thread.sleep(2000);
     }
 
     @And("the user clicks on the Continue to Checkout button")
     public void theUserClicksOnTheContinueButton() throws InterruptedException {
         WebElement continueButton = driver.findElement(By.cssSelector("button[type='submit']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", continueButton);
-        Thread.sleep(200);
+        Thread.sleep(2000);
         continueButton.click();
     }
 
     @Then("the user should see the error message under each empty required fields")
     public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
         WebElement errorElement = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form"));
-        Thread.sleep(200);
+        Thread.sleep(2000);
         String expectedErrorMessage = "Valid first name is required.";
-        Thread.sleep(200);
+        Thread.sleep(2000);
         assertEquals("Valid first name is required.", expectedErrorMessage, errorElement.getText());
-        Thread.sleep(200);
+        Thread.sleep(2000);
     }
 
     @And("the user fills in all required fields")
@@ -301,7 +301,7 @@ public class StepDefinitions {
         driver.findElement(By.id("cc-number")).sendKeys("1432177777");
         driver.findElement(By.id("cc-expiration")).sendKeys("26/26");
         driver.findElement(By.id("cc-cvv")).sendKeys("123");
-        Thread.sleep(200);
+        Thread.sleep(2000);
     }
 
     @Then("the user should be navigated to the Shop page")
