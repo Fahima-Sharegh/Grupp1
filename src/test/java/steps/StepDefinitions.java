@@ -19,12 +19,15 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
     private  WebDriverWait wait;
     private WebDriver driver;
+    // Suppress Selenium warnings
+
 
     @Before //Written by Anders
     public void setup() {
@@ -35,6 +38,8 @@ public class StepDefinitions {
         options.addArguments("incognito");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        System.setProperty("webdriver.chrome.silentOutput", "true");
+        java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(java.util.logging.Level.OFF);
         driver = new ChromeDriver(options);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
