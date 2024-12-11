@@ -205,12 +205,6 @@ public class StepDefinitions {
     //</editor-fold>
 
     //<editor-fold desc="Written by Fahima">
-//    @Given("user navigates to the shop homepage")
-//    public void the_user_navigates_to_the_shop_homepage() {
-//        driver.manage().window().maximize();
-//        driver.get(URL);
-//    }
-
     @When("user clicks on the {string} button")
     public void the_user_click_on_the_button(String string) throws InterruptedException {
         WebElement shopButton = driver.findElement(By.cssSelector("header[class='p-3 bg-dark text-white'] li:nth-child(2) a:nth-child(1)"));
@@ -306,12 +300,6 @@ public class StepDefinitions {
         driver.findElement(By.id("cc-cvv")).sendKeys("123");
         Thread.sleep(2000);
     }
-
-//    @Then("the user ended up in the same page")
-//    public void endedUpInSamePage() throws InterruptedException {
-//        String expectedUrl = "https://webshop-agil-testautomatiserare.netlify.app/checkout?paymentMethod=on";
-//        assertEquals(expectedUrl, driver.getCurrentUrl());
-//    }
 
     @Then("the user should be navigated to the Shop page")
     public void theUserShouldBeNavigatedToTheShopPage() {}
