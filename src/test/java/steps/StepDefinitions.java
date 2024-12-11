@@ -23,8 +23,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
-    private final String productPage = "https://webshop-agil-testautomatiserare.netlify.app/products";;
-    private final String cartPage = "https://webshop-agil-testautomatiserare.netlify.app/checkout";
     private  WebDriverWait wait;
     private WebDriver driver;
 
@@ -162,7 +160,7 @@ public class StepDefinitions {
 
     @Given("I navigate to the checkout page")
     public void iNavigateToTheCheckoutPage() throws InterruptedException {
-        driver.get(cartPage);
+        driver.get("https://webshop-agil-testautomatiserare.netlify.app/checkout");
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("li")));
     }
 
@@ -173,7 +171,7 @@ public class StepDefinitions {
 
     @When("I navigate to the product page")
     public void iNavigateToTheProductPage() throws InterruptedException {
-        driver.get(productPage);
+        driver.get("https://webshop-agil-testautomatiserare.netlify.app/products");
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("col")));
     }
 
@@ -192,7 +190,7 @@ public class StepDefinitions {
         }
     }
 
-    @Then("the cart item counter on the products page should show {string} items")
+    @Then("the cart item counter on the product page should show {string} items")
     public void theCartCounterOnTheProductsPageShouldShow(String quantity) {
         assertEquals(quantity, driver.findElement(By.id("buttonSize")).getText());
     }
