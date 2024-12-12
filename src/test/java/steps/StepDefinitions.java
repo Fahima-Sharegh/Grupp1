@@ -19,15 +19,12 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
     private  WebDriverWait wait;
     private WebDriver driver;
-    // Suppress Selenium warnings
-
 
     @Before //Written by Anders
     public void setup() {
@@ -112,7 +109,6 @@ public class StepDefinitions {
 
     @Then("I should not get an HTTP response error for any of the links") //Written by Anders
     public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
-
         // Get urls from a-elements
         List<String> urls = new ArrayList<>(driver
                 .findElements(By.tagName("a"))
@@ -277,12 +273,35 @@ public class StepDefinitions {
 
     @Then("the user should see the error message under each empty required fields")
     public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
-        WebElement errorElement = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form"));
-        Thread.sleep(2000);
-        String expectedErrorMessage = "Valid first name is required.";
-        Thread.sleep(2000);
-        assertEquals("Valid first name is required.", expectedErrorMessage, errorElement.getText());
-        Thread.sleep(2000);
+        WebElement firstNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid first name is required.']"));
+        WebElement lastNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid last name is required.']"));
+        WebElement emailError = driver.findElement(By.xpath("//div[normalize-space()='Please enter a valid email address for shipping updates.']"));
+        WebElement addressError = driver.findElement(By.xpath("//div[normalize-space()='Please enter your shipping address.']"));
+        WebElement countryError = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form//div[normalize-space()='Please select a valid country.']"));
+        WebElement cityError = driver.findElement(By.xpath("//div[normalize-space()='Please provide a valid state.']"));
+        WebElement zipError = driver.findElement(By.xpath("//div[normalize-space()='Zip code required.']"));
+        WebElement cardError = driver.findElement(By.xpath("//div[normalize-space()='Name on card is required']"));
+        WebElement expirationDateError = driver.findElement(By.xpath("//div[normalize-space()='Expiration date required']"));
+
+        String expectedFirstNameError = "Valid first name is required.";
+        String expectedLastNameError = "Valid last name is required.";
+        String expectedEmailError = "Please enter a valid email address for shipping updates.";
+        String expectedAddressError = "Please enter your shipping address.";
+        String expectedCountryError = "Please select a valid country.";
+        String expectedCityError = "Please provide a valid state.";
+        String expectedZipError = "Zip code required.";
+        String expectedCardError = "Name on card is required";
+        String expectedExpirationDateError = "Expiration date required";
+
+        assertEquals(expectedFirstNameError, firstNameError.getText());
+        assertEquals(expectedLastNameError, lastNameError.getText());
+        assertEquals(expectedEmailError, emailError.getText());
+        assertEquals(expectedAddressError, addressError.getText());
+        assertEquals(expectedCountryError, countryError.getText());
+        assertEquals(expectedCityError, cityError.getText());
+        assertEquals(expectedZipError, zipError.getText());
+        assertEquals(expectedCardError, cardError.getText());
+        assertEquals(expectedExpirationDateError, expirationDateError.getText());
     }
 
     @And("the user fills in all required fields")
@@ -303,10 +322,6 @@ public class StepDefinitions {
         driver.findElement(By.id("cc-cvv")).sendKeys("123");
         Thread.sleep(2000);
     }
-
-    @Then("the user should be navigated to the Shop page")
-    public void theUserShouldBeNavigatedToTheShopPage() {}
-
     //</editor-fold>
 
     //<editor-fold desc="Written by Baraa">
@@ -331,7 +346,6 @@ public class StepDefinitions {
                 By.xpath("//button[contains(text(), '➕ Add to cart')]")));
         Thread.sleep(500);
         button.click();
-
         System.out.println("Successfully clicked the button: " + buttonText);
     }
 
