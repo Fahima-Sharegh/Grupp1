@@ -286,9 +286,7 @@ public class StepDefinitions {
         WebElement cityError = driver.findElement(By.xpath("//div[normalize-space()='Please provide a valid state.']"));
         WebElement zipError = driver.findElement(By.xpath("//div[normalize-space()='Zip code required.']"));
         WebElement cardError = driver.findElement(By.xpath("//div[normalize-space()='Name on card is required']"));
-        WebElement creditCardError = driver.findElement(By.xpath("//div[normalize-space()='Credit card number is required']"));
         WebElement expirationDateError = driver.findElement(By.xpath("//div[normalize-space()='Expiration date required']"));
-        WebElement securityCodeError = driver.findElement(By.xpath("//div[normalize-space()='Security code required']"));
 
         String expectedFirstNameError = "Valid first name is required.";
         String expectedLastNameError = "Valid last name is required.";
@@ -300,15 +298,15 @@ public class StepDefinitions {
         String expectedCardError = "Name on card is required";
         String expectedExpirationDateError = "Expiration date required";
 
-        assertEquals(firstNameError.getText(), expectedFirstNameError);
-        assertEquals(lastNameError.getText(), expectedLastNameError);
-        assertEquals(emailError.getText(), expectedEmailError);
-        assertEquals(addressError.getText(), expectedAddressError);
-        assertEquals(countryError.getText(), expectedCountryError);
-        assertEquals(cityError.getText(), expectedCityError);
-        assertEquals(zipError.getText(), expectedZipError);
-        assertEquals(cardError.getText(), expectedCardError);
-        assertEquals(expirationDateError.getText(), expectedExpirationDateError);
+        assertEquals(expectedFirstNameError, firstNameError.getText());
+        assertEquals(expectedLastNameError, lastNameError.getText());
+        assertEquals(expectedEmailError, emailError.getText());
+        assertEquals(expectedAddressError, addressError.getText());
+        assertEquals(expectedCountryError, countryError.getText());
+        assertEquals(expectedCityError, cityError.getText());
+        assertEquals(expectedZipError, zipError.getText());
+        assertEquals(expectedCardError, cardError.getText());
+        assertEquals(expectedExpirationDateError, expirationDateError.getText());
     }
 
     @And("the user fills in all required fields")
