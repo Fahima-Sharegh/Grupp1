@@ -241,15 +241,40 @@ public void theUserClicksOnTheContinueButton() throws InterruptedException {
 
 @Then("the user should see the error message under each empty required fields")
 public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
-    WebElement errorElement = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form"));
-    Thread.sleep(2000);
-    String expectedErrorMessage = "Valid first name is required.";
-    Thread.sleep(2000);
-    assertEquals("Valid first name is required.", expectedErrorMessage, errorElement.getText());
-    Thread.sleep(2000);
 
+        WebElement firstNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid first name is required.']"));
+        WebElement lastNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid last name is required.']"));
+        WebElement emailError = driver.findElement(By.xpath("//div[normalize-space()='Please enter a valid email address for shipping updates.']"));
+        WebElement addressError = driver.findElement(By.xpath("//div[normalize-space()='Please enter your shipping address.']"));
+        WebElement countryError = driver.findElement(By.xpath("/html/body/main/div[2]/div[2]/form//div[normalize-space()='Please select a valid country.']"));
+        WebElement cityError = driver.findElement(By.xpath("//div[normalize-space()='Please provide a valid state.']"));
+        WebElement zipError = driver.findElement(By.xpath("//div[normalize-space()='Zip code required.']"));
+        WebElement cardError = driver.findElement(By.xpath("//div[normalize-space()='Name on card is required']"));
+        WebElement creditCardError = driver.findElement(By.xpath("//div[normalize-space()='Credit card number is required']"));
+        WebElement expirationDateError = driver.findElement(By.xpath("//div[normalize-space()='Expiration date required']"));
+        WebElement securityCodeError = driver.findElement(By.xpath("//div[normalize-space()='Security code required']"));
 
-}
+        String expectedFirstNameError = "Valid first name is required.";
+        String expectedLastNameError = "Valid last name is required.";
+        String expectedEmailError = "Please enter a valid email address for shipping updates.";
+        String expectedAddressError = "Please enter your shipping address.";
+        String expectedCountryError = "Please select a valid country.";
+        String expectedCityError = "Please provide a valid state.";
+        String expectedZipError = "Zip code required.";
+        String expectedCardError = "Name on card is required";
+        String expectedExpirationDateError = "Expiration date required";
+
+        assertEquals(firstNameError.getText(), expectedFirstNameError);
+        assertEquals(lastNameError.getText(), expectedLastNameError);
+        assertEquals(emailError.getText(), expectedEmailError);
+        assertEquals(addressError.getText(), expectedAddressError);
+        assertEquals(countryError.getText(), expectedCountryError);
+        assertEquals(cityError.getText(), expectedCityError);
+        assertEquals(zipError.getText(), expectedZipError);
+        assertEquals(cardError.getText(), expectedCardError);
+        assertEquals(expirationDateError.getText(), expectedExpirationDateError);
+    }
+
 
 @When("the user fills in all required fields")
 public void fillInRequiredFields() throws InterruptedException {
@@ -279,7 +304,5 @@ public void endedUpInSamePage() throws InterruptedException {
 }
 
 
-    @Then("the user should be navigated to the Shop page")
-    public void theUserShouldBeNavigatedToTheShopPage() {
-    }
+
 }
