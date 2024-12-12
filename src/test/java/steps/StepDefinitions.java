@@ -19,15 +19,12 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StepDefinitions {
     private final String URL = "https://webshop-agil-testautomatiserare.netlify.app/";
     private  WebDriverWait wait;
     private WebDriver driver;
-    // Suppress Selenium warnings
-
 
     @Before //Written by Anders
     public void setup() {
@@ -112,7 +109,6 @@ public class StepDefinitions {
 
     @Then("I should not get an HTTP response error for any of the links") //Written by Anders
     public void iClickOnEachOfTheLinksOnThePage() throws IOException, InterruptedException {
-
         // Get urls from a-elements
         List<String> urls = new ArrayList<>(driver
                 .findElements(By.tagName("a"))
@@ -277,7 +273,6 @@ public class StepDefinitions {
 
     @Then("the user should see the error message under each empty required fields")
     public void theUserShouldSeeTheErrorMessageUnderEachEmptyRequiredField() throws InterruptedException {
-
         WebElement firstNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid first name is required.']"));
         WebElement lastNameError = driver.findElement(By.xpath("//div[normalize-space()='Valid last name is required.']"));
         WebElement emailError = driver.findElement(By.xpath("//div[normalize-space()='Please enter a valid email address for shipping updates.']"));
@@ -327,10 +322,6 @@ public class StepDefinitions {
         driver.findElement(By.id("cc-cvv")).sendKeys("123");
         Thread.sleep(2000);
     }
-
-    @Then("the user should be navigated to the Shop page")
-    public void theUserShouldBeNavigatedToTheShopPage() {}
-
     //</editor-fold>
 
     //<editor-fold desc="Written by Baraa">
@@ -355,7 +346,6 @@ public class StepDefinitions {
                 By.xpath("//button[contains(text(), '➕ Add to cart')]")));
         Thread.sleep(500);
         button.click();
-
         System.out.println("Successfully clicked the button: " + buttonText);
     }
 
